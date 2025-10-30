@@ -1,15 +1,37 @@
 import React, { use } from "react";
 import AuthContext from "../../context/AuthContext";
+import { useLocation, useNavigate } from "react-router";
 
 function Register() {
   const { signInWithGoogle } = use(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location);
   const handleSignGoogle = () => {
     signInWithGoogle().then((res) => {
       console.log(res.user);
+      const newUser = {
+        name: res.user.displayName,
+        email: res.user.email,
+        image: res.user.photoURL,
+      };
+      // create user in the database
+      fetch("http://localhost:3000/users", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("data after save ", data);
+          navigate(`${location.state}`);
+        });
     });
   };
   return (
-    <div className="h-full flex flex-col justify-center items-center" >
+    <div className="h-full flex flex-col justify-center items-center">
       <div className="card bg-base-100 mx-auto w-full max-w-sm shrink-0 shadow-2xl">
         <h1 className="text-5xl font-bold text-center">Register now!</h1>
         <div className="card-body">

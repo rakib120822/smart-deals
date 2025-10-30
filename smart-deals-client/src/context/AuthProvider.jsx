@@ -7,11 +7,11 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
 } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
 
 const auth = getAuth(app);
-
 const googleProvider = new GoogleAuthProvider();
 
 function AuthProvider({ children }) {
@@ -32,7 +32,7 @@ function AuthProvider({ children }) {
     return signInWithPopup(auth, googleProvider);
   };
 
-  const signOut = () => {
+  const logOut = () => {
     setLoading(true);
     return signOut(auth);
   };
@@ -45,7 +45,7 @@ function AuthProvider({ children }) {
     setLoading,
     signInUser,
     signInWithGoogle,
-    signOut,
+    logOut,
   };
 
   useEffect(() => {
