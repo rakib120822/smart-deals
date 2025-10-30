@@ -4,9 +4,9 @@ import { Outlet } from "react-router";
 
 function Root() {
   return (
-    <div className="w-full flex flex-col justify-between">
+    <div className="w-full flex flex-col justify-between h-screen">
       <Navbar />
-      <div>
+      <div className="flex-1 ">
         <Outlet />
       </div>
     </div>

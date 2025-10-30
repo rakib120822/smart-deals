@@ -8,6 +8,10 @@ import Root from "./Layouts/Root.jsx";
 import Home from "./components/Home/Home.jsx";
 import AllProducts from "./components/AllProducts/AllProducts.jsx";
 import AuthProvider from "./context/AuthProvider.jsx";
+import Register from "./components/Auth/Register.jsx";
+import Login from "./components/Auth/Login.jsx";
+import MyProducts from "./components/MyProducts/MyProducts.jsx";
+import MyBids from "./components/My bids/MyBids.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +25,22 @@ const router = createBrowserRouter([
       {
         path: "/allproducts",
         Component: AllProducts,
+      },
+      {
+        path: "/register",
+        Component: Register,
+      },
+      {
+        path: "/login",
+        Component: Login,
+      },
+      {
+        path: "my-products",
+        element: <MyProducts />,
+      },
+      {
+        path: "/my-bids",
+        element: <MyBids />,
       },
     ],
   },
