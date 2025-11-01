@@ -6,10 +6,10 @@ function Register() {
   const { signInWithGoogle } = use(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
+ 
   const handleSignGoogle = () => {
     signInWithGoogle().then((res) => {
-      console.log(res.user);
+  
       const newUser = {
         name: res.user.displayName,
         email: res.user.email,
@@ -24,9 +24,9 @@ function Register() {
         body: JSON.stringify(newUser),
       })
         .then((res) => res.json())
-        .then((data) => {
-          console.log("data after save ", data);
-          navigate(`${location.state}`);
+        .then(() => {
+          
+          navigate(`${location.state ? location.state : "/"}`);
         });
     });
   };

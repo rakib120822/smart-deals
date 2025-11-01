@@ -1,9 +1,15 @@
 import React from "react";
+import LatestProducts from "../latest-products/LatestProducts";
+
+const latestProductsPromise = fetch(
+  "http://localhost:3000/latest-products"
+).then((res) => res.json());
 
 function Home() {
   return (
     <div>
-      <h3 className="bg-primary">Home</h3>
+      <title>Home</title>
+      <LatestProducts latestProductsPromise={latestProductsPromise} />
     </div>
   );
 }

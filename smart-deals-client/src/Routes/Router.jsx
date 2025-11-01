@@ -7,6 +7,7 @@ import Login from "../components/Auth/Login";
 import PrivateRoute from "../components/private routes/PrivateRoute";
 import MyProducts from "../components/MyProducts/MyProducts";
 import MyBids from "../components/My bids/MyBids";
+import ProductsDetails from "../components/ProductsDetails/ProductsDetails";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -35,6 +36,14 @@ const router = createBrowserRouter([
             <MyProducts />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/product-details/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/products/${params.id}`).then((res) =>
+            res.json()
+          ),
+        element: <ProductsDetails />,
       },
       {
         path: "/my-bids",

@@ -8,3 +8,8 @@
   --color-primary: #9f62f2;
   --color-secondary: teal;
 }
+
+a.active{
+  color: #9f62f2;
+  text-decoration: underline;
+}

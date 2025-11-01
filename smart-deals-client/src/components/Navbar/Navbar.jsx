@@ -30,7 +30,7 @@ function Navbar() {
   const handleSignOut = () => {
     logOut()
       .then(() => setUser(null))
-      .catch((err) => console.log(err.message));
+      .catch((err) => console.log(err));
   };
 
   return (
